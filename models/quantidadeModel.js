@@ -1,25 +1,25 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const quantidadeSchema = mongoose.Schema(
     {
-        receita: {
-            type: Number,
-            require: true
+        receitaId: {
+            type: Object,
+            require: true,
         },
-        ingrediente: {
-            type: Number,
-            require: true
+        ingredienteId: {
+            type: String,
+            require: true,
         },
         quantidade: {
             type: Number,
-            require: true
-        }
+            require: true,
+        },
     },
     {
-        timestamps: true
+        timestamps: true,
     }
-)
+);
 
-const Quantidade = mongoose.model('Quantidade', quantidadeSchema);
+const Quantidade = mongoose.model("Quantidade", quantidadeSchema);
 
 module.exports = Quantidade;

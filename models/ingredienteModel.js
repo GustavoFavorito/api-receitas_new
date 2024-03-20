@@ -1,21 +1,21 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const ingredienteSchema = mongoose.Schema(
     {
         nome: {
             type: String,
-            require: true
+            require: true,
         },
         unidade: {
             type: String,
             required: true,
-        }
+        },
     },
     {
-        timestamps: true
+        timestamps: true,
     }
-)
+);
 
-const Ingrediente = mongoose.model('Ingrediente', ingredienteSchema);
+const Ingrediente = mongoose.model("Ingrediente", ingredienteSchema);
 
 module.exports = Ingrediente;

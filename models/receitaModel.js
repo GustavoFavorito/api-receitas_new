@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const receitaSchema = mongoose.Schema(
     {
         titulo: {
             type: String,
-            require: true
+            require: true,
         },
         image_path: {
             type: String,
@@ -12,14 +12,14 @@ const receitaSchema = mongoose.Schema(
         },
         descricao: {
             type: String,
-            required: true
-        }
+            required: true,
+        },
     },
     {
-        timestamps: true
+        timestamps: true,
     }
-)
+);
 
-const Receita = mongoose.model('Receita', receitaSchema);
+const Receita = mongoose.model("Receita", receitaSchema);
 
 module.exports = Receita;
