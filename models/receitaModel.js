@@ -16,9 +16,19 @@ const receitaSchema = mongoose.Schema(
         },
         ingredientes: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "ingrediente",
-            }
+                nome: {
+                    type: String,
+                    required: true,
+                },
+                quantidade: {
+                    type: Number,
+                    required: true,
+                },
+                unidade: {
+                    type: String,
+                    required: true,
+                },
+            },
         ],
     },
     {
@@ -26,6 +36,6 @@ const receitaSchema = mongoose.Schema(
     }
 );
 
-const Receita = mongoose.model("Receita", receitaSchema, 'receitas');
+const Receita = mongoose.model("Receita", receitaSchema, "receitas");
 
 module.exports = Receita;
