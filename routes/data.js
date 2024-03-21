@@ -55,28 +55,27 @@ router.get("/:table/:id", async (req, res) => {
     }
 });
 
-// CREATE
-router.post("/:table", async (req, res) => {
+/* ==================================== AREA DE TESTES ==================================== */
+router.get("/:table", async(req, res) => {
     try {
         const { table } = req.params;
         switch (table) {
             case "receita":
-                const receita = await Receita.create(req.body);
+                const receita = await Receita.find({});
                 res.status(200).json(receita);
                 break;
             case "ingrediente":
-                const ingrediente = await Ingrediente.create(req.body);
+                const ingrediente = await Ingrediente.find({});
                 res.status(200).json(ingrediente);
                 break;
             case "quantidade":
-                const quantidade = await Quantidade.create(req.body);
+                const quantidade = await Quantidade.find({});
                 res.status(200).json(quantidade);
                 break;
             default:
                 break;
         }
     } catch (err) {
-        console.log(err.message);
         res.status(500).json({ message: err.message });
     }
 });
@@ -98,7 +97,10 @@ router.put("/:table/:id", async (req, res) => {
                 res.status(200).json(receita);
                 break;
             case "ingrediente":
-                let ingrediente = await Ingrediente.findByIdAndUpdate(id, req.body);
+                let ingrediente = await Ingrediente.findByIdAndUpdate(
+                    id,
+                    req.body
+                );
                 if (!ingrediente) {
                     return res.status(404).json({
                         message: `can't find any ingrediente with id ${id}`,
@@ -108,7 +110,10 @@ router.put("/:table/:id", async (req, res) => {
                 res.status(200).json(ingrediente);
                 break;
             case "quantidade":
-                let quantidade = await Quantidade.findByIdAndUpdate(id, req.body);
+                let quantidade = await Quantidade.findByIdAndUpdate(
+                    id,
+                    req.body
+                );
                 if (!quantidade) {
                     return res.status(404).json({
                         message: `can't find any quantidade with id ${id}`,
@@ -136,7 +141,9 @@ router.delete("/:table/:id", async (req, res) => {
                 if (!receita) {
                     return res
                         .status(404)
-                        .json({ message: `can't find any receita with id ${id}` });
+                        .json({
+                            message: `can't find any receita with id ${id}`,
+                        });
                 }
                 res.status(200).json(receita);
                 break;
@@ -145,7 +152,9 @@ router.delete("/:table/:id", async (req, res) => {
                 if (!ingrediente) {
                     return res
                         .status(404)
-                        .json({ message: `can't find any ingrediente with id ${id}` });
+                        .json({
+                            message: `can't find any ingrediente with id ${id}`,
+                        });
                 }
                 res.status(200).json(ingrediente);
                 break;
@@ -154,7 +163,9 @@ router.delete("/:table/:id", async (req, res) => {
                 if (!quantidade) {
                     return res
                         .status(404)
-                        .json({ message: `can't find any quantidade with id ${id}` });
+                        .json({
+                            message: `can't find any quantidade with id ${id}`,
+                        });
                 }
                 res.status(200).json(quantidade);
                 break;

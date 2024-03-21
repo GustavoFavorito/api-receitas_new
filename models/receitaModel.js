@@ -4,7 +4,7 @@ const receitaSchema = mongoose.Schema(
     {
         titulo: {
             type: String,
-            require: true,
+            required: true,
         },
         image_path: {
             type: String,
@@ -14,12 +14,18 @@ const receitaSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        ingredientes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "ingrediente",
+            }
+        ],
     },
     {
         timestamps: true,
     }
 );
 
-const Receita = mongoose.model("Receita", receitaSchema);
+const Receita = mongoose.model("Receita", receitaSchema, 'receitas');
 
 module.exports = Receita;
