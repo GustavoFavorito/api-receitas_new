@@ -1,2 +1,13 @@
 [build]
-    command = "node server.js"
+    command = "npm run serve"
+    functions = "functions"
+
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/server/:splat"
